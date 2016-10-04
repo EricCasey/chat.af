@@ -1,0 +1,101 @@
+html,
+body {
+    max-height: 100vh;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: monaco;
+    height: 100%;
+}
+
+.wrapper {
+    font-size: 14px;
+}
+
+nav.NavBar {
+    height: 40px;
+    padding: 8px;
+    background: #343333;
+    font-family: monaco;
+    color:green;
+    border-bottom: 1px solid;
+    border-bottom-color: #FFAAAA;
+}
+
+nav h1 {
+    margin: 0;
+}
+.message-text {
+  color: blue;
+}
+.MessageList {
+    height: calc(100vh - 131px);
+    padding: 16px 8px;
+    background: white;
+}
+
+.MessageList .Message {
+    padding: 11px 0;
+    display: flex;
+    color: green;
+}
+
+.MessageList .Message .username,
+.MessageList .Message .content {
+    display: inline-block;
+    padding: 4px 0;
+}
+
+.MessageList .Message .username {
+    flex: 15;
+    margin-right: 16px;
+    overflow: hidden;
+    font-weight: 700;
+}
+
+.MessageList .Message .content {
+    flex: 85;
+}
+
+.MessageList .Message.system {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.Username {
+  color: red;
+}
+
+footer {
+    height: 41px;
+    border-top: 1px solid black;
+    background-color: #343333;
+    display: flex;
+    align-items: center;
+}
+
+footer input {
+    border: 1px solid black;
+    margin: 4px;
+    height: 20px;
+    padding: 4px 8px;
+}
+
+footer #username {
+    flex: 3;
+}
+
+footer #new-message {
+    flex: 7;
+}
+.app {
+  height: inherit;
+}
+.MessageList {
+  height: 100%;
+  max-height: 100vh;
+  max-width: 100vw;
+}
+div.wrapper {
+  height: 100%;
+}
