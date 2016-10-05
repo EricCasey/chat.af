@@ -6,6 +6,7 @@ body {
     padding: 0;
     font-family: monaco;
     height: 100%;
+    background: MINTCREAM;
 }
 
 .wrapper {
@@ -15,11 +16,11 @@ body {
 nav.NavBar {
     height: 40px;
     padding: 8px;
-    background: #343333;
+    background: HONEYDEW;
     font-family: monaco;
-    color:green;
+    color:LIGHTSLATEGRAY;
     border-bottom: 1px solid;
-    border-bottom-color: #FFAAAA;
+    border-bottom-color: LIGHTGRAY;
 }
 
 nav h1 {
@@ -31,7 +32,7 @@ nav h1 {
 .MessageList {
     height: calc(100vh - 131px);
     padding: 16px 8px;
-    background: white;
+    background: MINTCREAM;
 }
 
 .MessageList .Message {
@@ -64,28 +65,33 @@ nav h1 {
 
 .Username {
   color: red;
+  width: 111px;
+  text-align: center;
 }
 
 footer {
     height: 41px;
-    border-top: 1px solid black;
-    background-color: #343333;
+    border-top: 1px solid MISTYROSE;
+    background-color: LAVENDERBLUSH;
     display: flex;
+    position: fixed;
     align-items: center;
+    bottom: 0px;
+    width: 100%;
 }
 
 footer input {
-    border: 1px solid black;
+    border: 1px solid LIGHTSEAGREEN;
     margin: 4px;
     height: 20px;
     padding: 4px 8px;
 }
 
-footer #username {
+#username {
     flex: 3;
 }
 
-footer #new-message {
+#new-message {
     flex: 7;
 }
 .app {

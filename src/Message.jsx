@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import Username from "./Username"
+import Username from './Username';
 
 import '../styles/App.css';
+import '../styles/index.css';
 
-class App extends Component {
+class Message extends Component {
   render() {
     console.log("Rendering <Message/>");
     return (
       <div className="Message">
-       <Username />
-       <span className="message-text">This message used to make me hungry. Now it's hardcoded.</span>
+       <Username UName={this.props.UName}/>
+       <span className="message-text" id={this.props.id}>{this.props.text}</span>
        </div>
     );
   }
 }
 
-export default App;
+export default Message;
