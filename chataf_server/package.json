@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "4.14.0",
+    "node-uuid": "1.4.7",
     "sa": "0.2.50",
     "ws": "1.1.1"
   }

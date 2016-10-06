@@ -5,7 +5,6 @@ import ChatBar from './ChatBar';
 import NavBar from './NavBar';
 
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -29,8 +28,14 @@ class App extends React.Component {
       myUsername: '',
       socket: new WebSocket("ws://localhost:4000")
     }
+    this.submit = this.submit.bind(this);
   }
 
+  submit(m) {
+    this.state.socket.send(JSON.stringify(m));
+  }
+
+  this.state.socket.onmessage()
 
   render() {
     console.log("Rendering <App/>");
@@ -38,7 +43,7 @@ class App extends React.Component {
       <div className="app">
       <NavBar />
       <MessageList key={this.state.data.messages.key} content={this.state.data.messages} userName={this.state.data.messages.username} />
-      <ChatBar name={this.state.data.currentUser.name} />
+      <ChatBar name={this.state.data.currentUser.name} submit={this.submit}/>
       </div>
     );
   }
@@ -47,12 +52,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log("componentDidMount <App />");
 
-
     this.state.socket.onopen = (event) => {
-      console.log("im about to send!");
-
-      this.state.socket.send("Here's some text that the server is urgently awaiting!");
-
       this.state.socket.onmessage = () => {
         console.log('conneted to server');
       }
