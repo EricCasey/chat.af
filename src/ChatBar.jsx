@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-const profanityFilter = require('/../node_modules/profanity-filter');
-profanityFilter.seed('profanity');
-profanityFilter.setReplacementMethod('word');
+// const profanityFilter = require('/../node_modules/profanity-filter');
+// profanityFilter.seed('profanity');
+// profanityFilter.setReplacementMethod('word');
 
 class ChatBar extends Component {
 
@@ -21,13 +21,13 @@ class ChatBar extends Component {
 
     handleMessageChange(event) {
         this.setState({
-            MessageValue: profanityFilter.clean(event.target.value)
+            MessageValue: event.target.value
         });
     }
 
     handleNameChange(event) {
         this.setState({
-            NameValue: profanityFilter.clean(event.target.value)
+            NameValue: event.target.value
         });
     }
 
