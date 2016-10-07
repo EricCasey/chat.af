@@ -58,7 +58,7 @@ class ChatBar extends Component {
                 let sysMessage = {
                     username: 'system',
                     content: `${oldName} changed their name to ${newName}`,
-                    MessageType: 'sM'
+                    MessageType: 'systemMessage'
                 }
                 this.props.submitSysMessage(sysMessage);
                 this.props.submit(messageInABottle);

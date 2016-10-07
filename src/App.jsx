@@ -4,8 +4,6 @@ import MessageList from './MessageList';
 import ChatBar from './ChatBar';
 import NavBar from './NavBar';
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -29,8 +27,8 @@ class App extends React.Component {
     this.state.socket.send(JSON.stringify(m));
   };
 
-  submitSysMessage(sM) {
-  this.state.socket.send(JSON.stringify(sM))
+  submitSysMessage(systemMessage) {
+  this.state.socket.send(JSON.stringify(systemMessage))
 };
 
   render() {
