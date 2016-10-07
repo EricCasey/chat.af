@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-const profanityFilter = require('../node_modules/profanity-filter');
+const profanityFilter = require('/../node_modules/profanity-filter');
 profanityFilter.seed('profanity');
 profanityFilter.setReplacementMethod('word');
 
