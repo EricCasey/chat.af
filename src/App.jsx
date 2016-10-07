@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/index.css';
 import MessageList from './MessageList';
 import ChatBar from './ChatBar';
 import NavBar from './NavBar';
+
 
 
 class App extends React.Component {
@@ -10,74 +11,75 @@ class App extends React.Component {
     super(props)
     this.state = {
       data: {
-        currentUser: { name: "Bob" },
-        messages: [
-          {
-            key: 1,
-            username: "Bob",
-            content: "Has anyone seen my marbles?",
-          },
-          {
-            key: 2,
-            username: "Anonymous",
-            content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
-          }
-        ]
+        currentUser: {
+          name: "anon"
+        },
+        messages: []
       },
       isLoading: false,
       myUsername: '',
-      socket: new WebSocket("ws://localhost:4000")
+      socket: new WebSocket("ws://localhost:4000"),
+      userCount: 1
     }
     this.submit = this.submit.bind(this);
-  }
+    this.submitSysMessage = this.submitSysMessage.bind(this);
+  };
 
   submit(m) {
     this.state.socket.send(JSON.stringify(m));
-  }
+  };
 
-  this.state.socket.onmessage()
+  submitSysMessage(sM) {
+  this.state.socket.send(JSON.stringify(sM))
+};
 
   render() {
     console.log("Rendering <App/>");
     return (
-      <div className="app">
-      <NavBar />
-      <MessageList key={this.state.data.messages.key} content={this.state.data.messages} userName={this.state.data.messages.username} />
-      <ChatBar name={this.state.data.currentUser.name} submit={this.submit}/>
+      <div className="app" >
+      <NavBar userCount={ this.state.userCount } / >
+      <MessageList key={ this.state.data.messages.key }
+      content={ this.state.data.messages }
+      username={ this.state.data.messages.username } />
+      <ChatBar name={ this.state.data.currentUser.name }
+      submit={ this.submit } submitSysMessage={this.submitSysMessage} />
       </div>
     );
-  }
-
-
-  componentDidMount() {
-    console.log("componentDidMount <App />");
-
-    this.state.socket.onopen = (event) => {
-      this.state.socket.onmessage = () => {
-        console.log('conneted to server');
-      }
   };
 
-
-
-
-    setTimeout( () => {
-      console.log("Simulating incoming message");
-      // Add a new message to the list of messages in the data store
-      this.state.data.messages.push({key: 3, username: "Michelle", content: "Anon stole your marbles!"});
-      // Update the state of the app component. This will call render()
-      this.setState({data: this.state.data})}, 3000);
-
-
-
-
-
-
-
+  componentDidMount() {
+    this.state.socket.onopen = (event) => {
+      this.state.socket.onmessage = (event) => {
+        if (!isNaN(event.data)) {
+          this.setState({userCount : event.data})
+        } else {
+        let unParsed=event.data
+        let parsed=JSON.parse(unParsed);
+        let username=parsed.username;
+        let content=parsed.content;
+        let key=parsed.id;
+        if( username === 'system' ) {
+          this.state.data.messages.push({
+            key: key,
+            content: content
+          })
+          this.setState({
+            data: this.state.data
+          })
+        } else {
+        this.state.data.messages.push({
+          key: key,
+          username: username,
+          content: content
+        })
+        this.setState({
+          data: this.state.data
+        })
+        }
+}
+      }
+    };
   }
-
-
-
 }
 
 export default App;

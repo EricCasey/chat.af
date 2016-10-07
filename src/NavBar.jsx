@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-
 import '../styles/index.css';
 
 class App extends Component {
   render() {
-    console.log("Rendering <NavBar/>");
     return (
-    <nav className="NavBar">
-          <h1>Chat.af</h1>
+        <nav className="navBar">
+          <h1>Chat.af&nbsp;-->&nbsp;<i>watch your mouth<p id="exclam">!</p></i></h1>
+          <div className="clientCount" >{this.props.userCount} Online</div>
     </nav>
     );
   }
