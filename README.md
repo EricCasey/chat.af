@@ -1,3 +1,10 @@
+
+
+![Image of chat.af](https://github.com/EricCasey/images4md/blob/master/chatafCAP.png)
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.  
